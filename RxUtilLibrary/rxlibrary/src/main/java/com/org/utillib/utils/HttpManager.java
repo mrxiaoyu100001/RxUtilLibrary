@@ -40,6 +40,7 @@ public class HttpManager {
 
     /**
      * 初始化全局变量
+     *
      * @param context 全局变量
      * @param BaseUrl 域名
      */
@@ -153,33 +154,40 @@ public class HttpManager {
     }
 
     /**
-     * 
      * @param url
      * @param request
      * @param cla
      * @param callBack
      */
-    public static void POST(String url, final PostRequest request, final Class cla, final DataCallBack callBack){
-        ViseHttp.BASE(new ApiPostRequest()
-                .setJson(GsonUtil.gson().toJson(request)))
-                .suffixUrl(url)
-                .request(new ACallback<String>() {
-                    @Override
-                    public void onSuccess(String data) {
-                        ViseLog.i(data);
-                        callBack.onSuccess(JSON.parseObject(data, cla));
-                    }
+    public static void POST(String url, final PostRequest request, final Class cla, final DataCallBack callBack) {
+        try {
+            String data = JSON.toJSONString(request);
+            data = AesUtil.encrypt(data);
+            ViseHttp.BASE(new ApiPostRequest()
+                    .setJson(data))
+                    .suffixUrl(url)
+                    .request(new ACallback<String>() {
+                        @Override
+                        public void onSuccess(String data) {
+                            ViseLog.i(data);
+                            callBack.onSuccess(JSON.parseObject(data, cla));
+                        }
 
-                    @Override
-                    public void onFail(int errCode, String errMsg) {
-                        ViseLog.e("request errorCode:" + errCode + ",errorMsg:" + errMsg);
-                        callBack.onError(errCode, errMsg);
-                    }
-                });
+                        @Override
+                        public void onFail(int errCode, String errMsg) {
+                            ViseLog.e("request errorCode:" + errCode + ",errorMsg:" + errMsg);
+                            callBack.onError(errCode, errMsg);
+                        }
+                    });
+        } catch (Exception e) {
+            e.printStackTrace();
+            callBack.onError(119, "请求失败");
+        }
     }
 
     public interface DataCallBack<D> {
         public void onSuccess(D responser);
+
         public void onError(int errCode, String errMsg);
     }
 }
