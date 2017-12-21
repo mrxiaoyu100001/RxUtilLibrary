@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/RxUtilLibrary.iml" filepath="$PROJECT_DIR$/RxUtilLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/netexpand/netexpand.iml" filepath="$PROJECT_DIR$/netexpand/netexpand.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rxlibrary/rxlibrary.iml" filepath="$PROJECT_DIR$/rxlibrary/rxlibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/xsnow/xsnow.iml" filepath="$PROJECT_DIR$/xsnow/xsnow.iml" />
     </modules>
   </component>

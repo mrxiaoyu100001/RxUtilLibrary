@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.org.rxutillibrary.utils.HttpManager;
+import com.org.utillib.utils.HttpManager;
 
 public class MainActivity extends AppCompatActivity {
 

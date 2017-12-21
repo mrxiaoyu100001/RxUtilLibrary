@@ -2,7 +2,7 @@ package com.org.rxutillibrary;
 
 import android.app.Application;
 
-import com.org.rxutillibrary.utils.HttpManager;
+import com.org.utillib.utils.HttpManager;
 
 /**
  * @Created: xiaoyu  on 2017.12.20 18:30.
