@@ -24,10 +24,32 @@ android {
 dependencies {
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.vise.xiaoyaoyou:viseutils:1.1.0'
+
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+
+
+//
+//    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+//    compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
+//    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+//    compile 'com.trello.rxlifecycle2:rxlifecycle:2.0.1'
+//    compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.0.1'
+
+
+
+//    compile 'com.trello:rxlifecycle:0.4.0'
+//    compile 'com.trello:rxlifecycle-comp／onents:0.4.0'
+
+
+
+   //处理rxjava内存泄漏
+//    compile 'com.trello.rxlifecycle2:rxlifecycle:2.0.1'
+//    compile 'com.trello.rxlifecycle2:rxlifecycle-android:2.0.1'
+//    compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.0.1'
+
     compile 'org.greenrobot:greendao:3.2.0'
     compile 'com.alibaba:fastjson:1.2.31'
     provided 'com.github.bumptech.glide:glide:3.7.0'
