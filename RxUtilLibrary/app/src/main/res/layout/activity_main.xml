@@ -11,4 +11,28 @@
         android:gravity="center"
         android:text="Hello World!"
         android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/act_tv_test1"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:gravity="center"
+        android:text="Hello World!"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/act_tv_test2"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:gravity="center"
+        android:text="Hello World!"
+        android:textSize="18sp" />
+    <TextView
+        android:id="@+id/act_tv_test3"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:gravity="center"
+        android:text="Hello World!"
+        android:textSize="18sp" />
+
 </LinearLayout>

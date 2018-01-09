@@ -21,6 +21,8 @@ public class MyAppclication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        HttpManager.builder(this, "http://123.57.0.93:8080/");
+        HttpManager.builder(this, "http://192.168.62.138:8080");
+//        HttpManager.builder(this, "http://123.56.178.125:8080");
+//        HttpManager.builder(this, "http://123.57.0.93:8080/");
     }
 }

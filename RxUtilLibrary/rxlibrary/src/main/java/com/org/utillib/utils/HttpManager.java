@@ -2,18 +2,13 @@ package com.org.utillib.utils;
 
 import android.content.Context;
 
-import com.alibaba.fastjson.JSON;
 import com.org.utillib.loader.FrescoLoader;
 import com.vise.log.ViseLog;
 import com.vise.log.inner.LogcatTree;
 import com.vise.netexpand.convert.GsonConverterFactory;
-import com.vise.netexpand.request.ApiPostRequest;
 import com.vise.utils.assist.SSLUtil;
-import com.vise.xsnow.common.GsonUtil;
 import com.vise.xsnow.http.ViseHttp;
-import com.vise.xsnow.http.callback.ACallback;
 import com.vise.xsnow.http.interceptor.HttpLogInterceptor;
-import com.vise.xsnow.http.request.PostRequest;
 import com.vise.xsnow.loader.LoaderManager;
 
 import java.util.HashMap;
@@ -129,65 +124,5 @@ public class HttpManager {
 //                .proxy(new Proxy(Proxy.Type.HTTP, new SocketAddress() {}))
         ;
 
-    }
-
-    /*清除缓存*/
-    public static void clearCache() {
-        ViseHttp.getInstance().clearCache();
-    }
-
-    private static void GET(String url, DataCallBack callBack) {
-        ViseHttp.POST().suffixUrl(url).request(new ACallback<String>() {
-            @Override
-            public void onSuccess(String authorModel) {
-                if (authorModel == null) {
-                    return;
-                }
-                ViseLog.i("request onSuccess!" + JSON.parseObject(authorModel));
-            }
-
-            @Override
-            public void onFail(int errCode, String errMsg) {
-                ViseLog.e("request errorCode:" + errCode + ",errorMsg:" + errMsg);
-            }
-        });
-    }
-
-    /**
-     * @param url
-     * @param request
-     * @param cla
-     * @param callBack
-     */
-    public static void POST(String url, final PostRequest request, final Class cla, final DataCallBack callBack) {
-        try {
-            String data = JSON.toJSONString(request);
-            data = AesUtil.encrypt(data);
-            ViseHttp.BASE(new ApiPostRequest()
-                    .setJson(data))
-                    .suffixUrl(url)
-                    .request(new ACallback<String>() {
-                        @Override
-                        public void onSuccess(String data) {
-                            ViseLog.i(data);
-                            callBack.onSuccess(JSON.parseObject(data, cla));
-                        }
-
-                        @Override
-                        public void onFail(int errCode, String errMsg) {
-                            ViseLog.e("request errorCode:" + errCode + ",errorMsg:" + errMsg);
-                            callBack.onError(errCode, errMsg);
-                        }
-                    });
-        } catch (Exception e) {
-            e.printStackTrace();
-            callBack.onError(119, "请求失败");
-        }
-    }
-
-    public interface DataCallBack<D> {
-        public void onSuccess(D responser);
-
-        public void onError(int errCode, String errMsg);
     }
 }

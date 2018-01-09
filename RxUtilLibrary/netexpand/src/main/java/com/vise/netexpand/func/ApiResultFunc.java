@@ -1,7 +1,10 @@
 package com.vise.netexpand.func;
 
 import android.text.TextUtils;
+import android.util.Log;
 
+import com.google.gson.JsonSyntaxException;
+import com.vise.log.ViseLog;
 import com.vise.netexpand.mode.ApiResult;
 import com.vise.netexpand.mode.ResponseCode;
 import com.vise.xsnow.common.GsonUtil;
@@ -40,6 +43,7 @@ public class ApiResultFunc<T> implements Function<ResponseBody, ApiResult<T>> {
                     T data = GsonUtil.gson().fromJson(apiResult.getData().toString(), type);
                     apiResult.setData(data);
                     apiResult.setCode(ResponseCode.HTTP_SUCCESS);
+                    ViseLog.e(apiResult);
                 } else {
                     apiResult.setMsg("ApiResult's data is null");
                 }
@@ -57,6 +61,7 @@ public class ApiResultFunc<T> implements Function<ResponseBody, ApiResult<T>> {
 
     private ApiResult parseApiResult(String json, ApiResult apiResult) throws JSONException {
         if (TextUtils.isEmpty(json)) return null;
+        Log.i("result", "parseApiResult: " + json);
         JSONObject jsonObject = new JSONObject(json);
         if (jsonObject.has("code")) {
             apiResult.setCode(jsonObject.getInt("code"));
